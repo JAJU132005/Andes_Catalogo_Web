@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /solicitudes/{id} {
+      // Cualquier persona puede CREAR una solicitud (formulario público),
+      // validando que los campos obligatorios existan y tengan tipo correcto.
+      allow create: if request.resource.data.keys().hasAll(
+                       ['nombre','cedula','ciudad','correo','telefono','materialId','estado'])
+                    && request.resource.data.nombre is string
+                    && request.resource.data.nombre.size() >= 3
+                    && request.resource.data.correo is string
+                    && request.resource.data.cedula is string;
+
+      // Solo usuarios AUTENTICADOS (personal de ANDES) pueden leer la base,
+      // actualizar estados y borrar (limpieza de datos demo). Así se protegen
+      // los datos personales y la gestión queda restringida al equipo.
+      allow read, update, delete: if request.auth != null;
+    }
+  }
+}

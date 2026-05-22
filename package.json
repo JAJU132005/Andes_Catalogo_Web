@@ -1,0 +1,27 @@
+{
+  "name": "andes-catalogo-3d",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Catálogo web interactivo con visor 3D y dashboard administrativo para ANDES - Hackathon Talento Tech Oriente 2026",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 10000",
+    "seed": "node scripts/seed.js"
+  },
+  "dependencies": {
+    "firebase": "^10.12.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "dotenv": "^16.4.5",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "vite": "^5.2.0"
+  }
+}
